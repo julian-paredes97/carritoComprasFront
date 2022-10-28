@@ -16,13 +16,13 @@ const Cart = () => {
   /* Cada vez que se modifica el carrito, actualizamos la cantidad de productos */
   useEffect(() => {
     setProductsLength(
-      cartItems.reduce((previous, current) => previous + current.amount, 0) //0 es el estado inicial del previous
+      cartItems.reduce((previous, current) => previous + current.cantidad, 0) //0 es el estado inicial del previous
     );
   }, [cartItems]);
 
    /* Obtenemos el precio total */
    const total = cartItems.reduce(
-    (previous, current) => previous + current.amount * current.price,
+    (previous, current) => previous + current.cantidad * current.precio,  //cambie amount=cantidad y price=precio
     0
   );
 

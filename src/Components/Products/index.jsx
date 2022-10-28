@@ -1,8 +1,8 @@
 //import React, {useContext, useState} from 'react'
 //import React, {useEffect, useRef, useState} from 'react'
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import {productsData} from '../../Data/ProductsData'
-//import { CartContext} from '../../Context/CartContext'
+import  CartContext from '../../Context/CartContext'
 import Card from '../Card'
 import styles from "./styles.module.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,6 +15,11 @@ const tele = window.Telegram.WebApp; //conectar a telegram
 function Products () {
   /* Traemos del context la funcion para agregar un producto */
   /*const { addItemToCart } = useContext(CartContext);*/
+
+  /* Traemos del context la funcion para agregar un producto */
+  const { products } = useContext(CartContext);
+
+  console.log("chupamelooo",products);
 
   const [dropdown,setDropdown] = useState(false);
 
@@ -64,7 +69,7 @@ function Products () {
 
   //var Aseo=0;
 
-  const accionTodas =() =>{
+  /*const accionTodas =() =>{
     //alert("soy la accion 1");
     //Aseo = Aseo + 1;
     //console.log(Aseo)
@@ -72,9 +77,9 @@ function Products () {
     //console.log(temp)
     //console.log("aber:")
     //console.log(cartItems)
-  }
+  }*/
 
-  const accionAseo =() =>{
+  /*const accionAseo =() =>{
     //alert("soy la accion 1");
     //Aseo = Aseo + 1;
     //console.log(Aseo)
@@ -82,12 +87,12 @@ function Products () {
     //console.log(temp)
     //console.log("aber:")
     //console.log(cartItems)
-  }
+  }*/
 
   // Find multiple objects that satisfy condition
-  const filteredAseo = productsData.filter(obj => {
+  /*const filteredAseo = productsData.filter(obj => {
     return obj.category === 'Aseo';
-  });
+  });*/
 
   return (
     <>
@@ -97,9 +102,9 @@ function Products () {
           Categorias
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem onClick={()=>accionTodas()}> Todas </DropdownItem>
+          <DropdownItem /*onClick={()=>accionTodas()}*/> Todas </DropdownItem>
           <DropdownItem divider/>
-          <DropdownItem onClick={()=>accionAseo()}> Aseo </DropdownItem>
+          <DropdownItem /*onClick={()=>accionAseo()}*/> Aseo </DropdownItem>
           <DropdownItem divider/>
           <DropdownItem /*onClick={()=>accionComida()}*/> Comida </DropdownItem>
           <DropdownItem divider/>
@@ -109,9 +114,9 @@ function Products () {
 
 
     <div className={styles.cards__container}>
-      {temp.map((product)=>{
+      {products.map((product,codigo)=>{
         return (
-            <Card food={product} key={product.id} /*onAdd={onAdd} onRemove={onRemove}*/ />
+            <Card food={product} key={codigo} /*onAdd={onAdd} onRemove={onRemove}*/ />
           );
         /*<div key={i} className={styles.card}>
           <img src={product.img} alt={product.name} />

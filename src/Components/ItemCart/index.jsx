@@ -11,18 +11,18 @@ export const ItemCart = ({ item }) => {
 
   return (
     <div className={styles.cartItem}>
-      <img src={item.img} alt={item.name} className={styles.image__container}/>
+      <img src={item.imagen} alt={item.descripcion} className={styles.image__container}/>
       <div className={styles.dataContainer}>
         <div className={styles.left}>
-          <p>{item.name}</p>
+          <p>{item.descripcion}</p>
           <div className={styles.buttons}>
             <button onClick={() => addItemToCart(item)}>AGREGAR</button>
             <button onClick={() => deleteItemToCart(item)}>SACAR</button>
           </div>
         </div>
         <div className={styles.right}>
-          <div>{item.amount}</div>
-          <p>Total: ${item.amount * item.price}</p>
+          <div>{item.cantidad}</div>
+          <p>Total: ${item.cantidad * item.precio}</p>
         </div>
       </div>
     </div>

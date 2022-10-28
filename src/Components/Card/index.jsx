@@ -10,7 +10,8 @@ function Card({ food/*, onAdd, onRemove */}) {
   /*const [count, setCount] = useState(0);*/
   /* Traemos del context la funcion para agregar un producto */
   const { addItemToCart } = useContext(CartContext);
-  const { id, price, amount, name, img ,category } = food;
+  //const { id, price, amount, name, img ,category } = food;
+  const { codigo,categoria,descripcion, precio, cantidad, imagen } = food;
 
   /*const handleIncrement = () => {
     setCount(count + 1);
@@ -23,14 +24,14 @@ function Card({ food/*, onAdd, onRemove */}) {
 
   return (
     <div className="card">
-      <div key={id} className={styles.card}>
-          <img src={img} alt={name} className={styles.image__container}  />
+      <div key={codigo} className={styles.card}>
+          <img src={imagen} alt={descripcion} className={styles.image__container}  />
           <div>
             <p className={styles.p}>
-              {name}
+              {descripcion}
             </p>
             <p className={styles.p}>
-              ${price}
+              ${precio}
             </p>
           </div>
           <button className={styles.button} onClick={()=> addItemToCart(food)}>Agregar al carrito</button>
