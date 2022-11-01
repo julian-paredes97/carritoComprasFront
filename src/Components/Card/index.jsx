@@ -27,10 +27,10 @@ function Card({ food/*, onAdd, onRemove */}) {
       <div key={codigo} className={styles.card}>
           <img src={imagen} alt={descripcion} className={styles.image__container}  />
           <div>
-            <p className={styles.p}>
+            <p className={styles.p1}>
               {descripcion}
             </p>
-            <p className={styles.p}>
+            <p className={styles.p2}>
               ${precio}
             </p>
           </div>

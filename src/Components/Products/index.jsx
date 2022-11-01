@@ -1,16 +1,20 @@
 //import React, {useContext, useState} from 'react'
 //import React, {useEffect, useRef, useState} from 'react'
 import React, {useState, useEffect, useContext} from 'react'
-import {productsData} from '../../Data/ProductsData'
+//import {productsData} from '../../Data/ProductsData'
 import  CartContext from '../../Context/CartContext'
 import Card from '../Card'
 import styles from "./styles.module.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap'
 
-var temp = productsData;
+//var temp = productsData;
 
 const tele = window.Telegram.WebApp; //conectar a telegram
+
+var temp;
+
+var count = false;
 
 function Products () {
   /* Traemos del context la funcion para agregar un producto */
@@ -18,6 +22,14 @@ function Products () {
 
   /* Traemos del context la funcion para agregar un producto */
   const { products } = useContext(CartContext);
+
+
+  if(count === false){
+    temp = products;
+    count=true;
+  }
+
+  //temp = products;
 
   console.log("chupamelooo",products);
 
@@ -69,30 +81,94 @@ function Products () {
 
   //var Aseo=0;
 
-  /*const accionTodas =() =>{
+  const accionTodas =() =>{
     //alert("soy la accion 1");
     //Aseo = Aseo + 1;
     //console.log(Aseo)
-    temp=productsData;     //cambia para mostrar todos los productos
+    temp=products;     //cambia para mostrar todos los productos
     //console.log(temp)
     //console.log("aber:")
     //console.log(cartItems)
-  }*/
+  }
 
-  /*const accionAseo =() =>{
+  const accionAseo =() =>{
+    temp = filteredAseo;
+  }
+
+  const accionAldor =() =>{
+    temp = filteredAldor;
+  }
+
+  const accionFarmacos =() =>{
     //alert("soy la accion 1");
     //Aseo = Aseo + 1;
     //console.log(Aseo)
-    temp=filteredAseo;     //cambia todos los productos por solo los de aseo
+    temp=filteredFarmacos;     //cambia todos los productos por solo los de aseo
+    console.log(temp)
     //console.log(temp)
     //console.log("aber:")
     //console.log(cartItems)
-  }*/
+  }
+
+  const accionCuidadoIntimo =() =>{
+    //alert("soy la accion 1");
+    //Aseo = Aseo + 1;
+    //console.log(Aseo)
+    temp=filteredCuidadoIntimo;     //cambia todos los productos por solo los de aseo
+    console.log(temp)
+    //console.log(temp)
+    //console.log("aber:")
+    //console.log(cartItems)
+  }
+
+  const accionCuidadoPersonal =() =>{
+    temp = filteredCuidadoPersonal;
+  }
+
+  const accionDetergentes =() =>{
+    temp = filteredDetergentes;
+  }
+
+  const accionEnlatados =() =>{
+    temp = filteredEnlatados;
+  }
+
+  const accionTratCapilares =() =>{
+    temp = filteredTratCapilares;
+  }
 
   // Find multiple objects that satisfy condition
-  /*const filteredAseo = productsData.filter(obj => {
-    return obj.category === 'Aseo';
-  });*/
+  const filteredAseo = products.filter(obj => {
+    return obj.categoria ==='GLOBOVENTAS (COLGATE)';
+  });
+
+  const filteredAldor = products.filter(obj => {
+    return obj.categoria ==='COMESTIBLES ALDOR';
+  });
+
+  const filteredFarmacos = products.filter(obj => {
+    return obj.categoria === 'FARMACOS';
+  });
+
+  const filteredCuidadoIntimo = products.filter(obj => {
+    return obj.categoria === 'CUIDADO INTIMO';
+  });
+
+  const filteredCuidadoPersonal = products.filter(obj => {
+    return obj.categoria === 'CUIDADO PERSONAL';
+  });
+
+  const filteredDetergentes = products.filter(obj => {
+    return obj.categoria === 'DETERGENTES';
+  });
+
+  const filteredEnlatados = products.filter(obj => {
+    return obj.categoria === 'ENLATADOS';
+  });
+
+  const filteredTratCapilares = products.filter(obj => {
+    return obj.categoria === 'TRATAMIENTOS CAPILARES';
+  });
 
   return (
     <>
@@ -102,19 +178,29 @@ function Products () {
           Categorias
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem /*onClick={()=>accionTodas()}*/> Todas </DropdownItem>
+          <DropdownItem onClick={()=>accionTodas()}> Todas </DropdownItem>
           <DropdownItem divider/>
-          <DropdownItem /*onClick={()=>accionAseo()}*/> Aseo </DropdownItem>
+          <DropdownItem onClick={()=>accionAseo()}> Aseo </DropdownItem>
           <DropdownItem divider/>
-          <DropdownItem /*onClick={()=>accionComida()}*/> Comida </DropdownItem>
+          <DropdownItem onClick={()=>accionAldor()}> Comestibles Aldor </DropdownItem>
           <DropdownItem divider/>
-          <DropdownItem> Hogar </DropdownItem>
+          <DropdownItem onClick={()=>accionCuidadoIntimo()}> Cuidado Intimo </DropdownItem>
+          <DropdownItem divider/>
+          <DropdownItem onClick={()=>accionCuidadoPersonal()}> Cuidado Personal </DropdownItem>
+          <DropdownItem divider/>
+          <DropdownItem onClick={()=>accionDetergentes()}> Detergentes </DropdownItem>
+          <DropdownItem divider/>
+          <DropdownItem onClick={()=>accionEnlatados()}> Enlatados </DropdownItem>
+          <DropdownItem divider/>
+          <DropdownItem onClick={()=>accionFarmacos()}> Farmacos </DropdownItem>
+          <DropdownItem divider/>
+          <DropdownItem onClick={()=>accionTratCapilares()}> Tratamientos capilares </DropdownItem>
         </DropdownMenu>
       </Dropdown>
 
 
     <div className={styles.cards__container}>
-      {products.map((product,codigo)=>{
+      {temp.map((product,codigo)=>{
         return (
             <Card food={product} key={codigo} /*onAdd={onAdd} onRemove={onRemove}*/ />
           );

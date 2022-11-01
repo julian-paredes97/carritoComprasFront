@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 150px;
+  width: 140px;
   //width: 150px;
   height: 320px;
   //height: 250px;
@@ -30,6 +30,8 @@
 .image__container {
   width: 100px;
   height: 100px;
+  //width: 100px;
+  //height: 100px;
   margin: 0 auto;
   /*padding-bottom: 5px;*/
 
@@ -87,10 +89,23 @@
   display: none;
 }
 
-.p {
+.p1 {
   font-family: Roboto;
   text-align: center;
   font-weight: bolder;
+  font-size: 13px;
+
+  //font-size-adjust: 1.5;
+  //font-size: 30 px;   
+  //font-size: 3vw;  //supuestamente cambia con el viewport
+}
+
+.p2 {
+  font-family: Roboto;
+  text-align: center;
+  //font-size: 5px;
+  font-weight: bolder;
+
   //font-size-adjust: 1.5;
   //font-size: 30 px;   
   //font-size: 3vw;  //supuestamente cambia con el viewport

@@ -23,7 +23,8 @@ export const CartProvider = ({children})=>{
         const products = data.data.productos
         setProducts(products);
         //.then(({ data }) => setProducts(data.products));
-        console.log("DATamelo:",data.data.productos);
+        
+        //console.log("DATamelo:",data.data.productos);
     };
 
     useEffect(() => {
